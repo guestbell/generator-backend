@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\GuestBell.Common.Dal\GuestBell.Common.Dal.csproj" />
+    <ProjectReference Include="..\..\Common\GuestBell.Common.<%= projectName %>\GuestBell.Common.<%= projectName %>.csproj" />
+    <ProjectReference Include="..\..\Common\GuestBell.Common\GuestBell.Common.csproj" />
+  </ItemGroup>
+
+</Project>
