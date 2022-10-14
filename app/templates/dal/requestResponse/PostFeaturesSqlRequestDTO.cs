@@ -10,10 +10,10 @@ namespace GuestBell.Dal.<%= projectName %>.RequestResponse
 {
     public class Post<%= featureName %>sSqlRequestDTO : BaseSqlRequestDTO
     {
-        <%if(isBoundToProperty) { -%>
+<%if(isBoundToProperty) { -%>
         public long PropertyId { get; set; }
         
-        <% } -%>
+<% } -%>
         public List<Post<%= featureName %>SqlDTO> <%= featureName %>s { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace GuestBell.Dal.<%= projectName %>.RequestResponse
     public class Get<%= featureName %>sSqlResponseDTO : BaseSqlResponseDTO
     {
         <%if(!isPaginated) {
-        %>public List<<%= featureName %>DTO> <%= featureName %>s { get; set; }<%
+        %>public List<<%= featureName %>SqlDTO> <%= featureName %>s { get; set; }<%
         } else {
         %>public PaginatedDataSqlDTO<<%= featureName %>SqlDTO> <%= featureName %>s { get; set; }<%
         } %>

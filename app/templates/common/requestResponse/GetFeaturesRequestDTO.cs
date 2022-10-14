@@ -10,10 +10,10 @@ namespace GuestBell.Common.<%= projectName %>.RequestResponse
 {
     public class Get<%= featureName %>sRequestDTO : <% if(!isPaginated) { %>BaseRequestDTO<% } else {%>PaginatedRequestDTO<<%= featureName %>ColumnNameEnum><% }%>
     {
-        <%if(isBoundToProperty) { -%>
+<%if(isBoundToProperty) { -%>
         public long PropertyId { get; set; }
         
-        <% } -%>
+<% } -%>
         public List<long> Ids { get; set; }
     }
 }

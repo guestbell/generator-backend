@@ -9,12 +9,12 @@ namespace GuestBell.Common.<%= projectName %>.RequestResponse
 {
     public class Delete<%= featureName %>sRequestDTO : BaseRequestDTO
     {
-        <%if(isBoundToProperty) { -%>
+<%if(isBoundToProperty) { -%>
         public long PropertyId { get; set; }
 
-        <% } -%>
+<% } -%>
         public List<long> Ids { get; set; }
 
-public bool Revert { get; set; } = false;
+        public bool Revert { get; set; } = false;
     }
 }

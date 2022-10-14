@@ -1,9 +1,17 @@
 using System;
+<%if(namespaceRequestResponse) { -%>
+using GuestBell.Common.<%= projectName %>.Model.<%= featureName %>
+<% } else { -%>
+using GuestBell.Common.<%= projectName %>.Model
+<% } -%>
 
-namespace GuestBell.Dal.<%= projectName %>.Model
+<%if(namespaceRequestResponse) { -%>
+namespace GuestBell.Dal.<%= projectName %>.RequestResponse.<%= featureName %>
+<% } else { -%>
+namespace GuestBell.Dal.<%= projectName %>.RequestResponse
+<% } -%>
 {
-    public class Put<%= featureName %>SqlDTO
+    public class Put<%= featureName %>SqlDTO : Put<%= featureName %>BaseDTO 
     {
-        public long Id { get; set; }
     }
 }

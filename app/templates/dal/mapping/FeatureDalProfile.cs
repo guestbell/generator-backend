@@ -24,10 +24,10 @@ namespace GuestBell.Dal.<%= projectName %>.Mapping
             CreateMap<<%= featureName %>SqlDTO, <%= featureName %>DTO>();
 <% } -%>
 <% if(includePut) { -%>
-            CreateMap<Put<%= featureName %>SqlDTO, Put<%= featureName %>DTO>();
+            CreateMap<Put<%= featureName %>DTO, Put<%= featureName %>SqlDTO>();
 <% } -%>
 <% if(includePost) { -%>
-            CreateMap<Post<%= featureName %>SqlDTO, Post<%= featureName %>DTO>();
+            CreateMap<Post<%= featureName %>DTO, Post<%= featureName %>SqlDTO>();
 <% } -%>
 <% if(includeGet || includePut || includePost) { -%>
 

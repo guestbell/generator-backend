@@ -15,11 +15,20 @@ namespace GuestBell.Common.<%= projectName %>.Interface
 <% if(includePost) { -%>
         Task<Post<%= featureName %>sResponseDTO> Post(Post<%= featureName %>sRequestDTO request);
 <% } -%>
-<% if(includeGet) { %>
+<% if(includePost && (includeGet || includeDelete || includePut)) { -%>
+
+<% } -%>
+<% if(includeGet) { -%>
         Task<Get<%= featureName %>sResponseDTO> Get(Get<%= featureName %>sRequestDTO request);
+<% } -%>
+<% if(includeGet && (includeDelete || includePut)) { -%>
+
 <% } -%>
 <% if(includeDelete) { -%>
         Task<Delete<%= featureName %>sResponseDTO> Delete(Delete<%= featureName %>sRequestDTO request);
+<% } -%>
+<% if(includeDelete && includePut) { -%>
+
 <% } -%>
 <% if(includePut) { -%>
         Task<Put<%= featureName %>sResponseDTO> Put(Put<%= featureName %>sRequestDTO request);

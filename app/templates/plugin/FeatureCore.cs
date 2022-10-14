@@ -50,7 +50,9 @@ namespace GuestBell.Plugin.<%= projectName %>
                 return resp;
             }, logger, nameof(Get));
         }
-        
+<% } -%>
+<% if(includeGet && (includeDelete || includePost || includePut)) { -%>
+
 <% } -%>
 <% if(includePost) { -%>
         public async Task<Post<%= featureName %>sResponseDTO> Post(Post<%= featureName %>sRequestDTO request)
@@ -63,7 +65,9 @@ namespace GuestBell.Plugin.<%= projectName %>
                 return resp;
             }, logger, nameof(Post));
         }
-        
+<% } -%>
+<% if(includePost && (includeDelete || includePut)) { -%>
+
 <% } -%>
 <% if(includePut) { -%>
         public async Task<Put<%= featureName %>sResponseDTO> Put(Put<%= featureName %>sRequestDTO request)
@@ -76,7 +80,9 @@ namespace GuestBell.Plugin.<%= projectName %>
                 return resp;
             }, logger, nameof(Put));
         }
-        
+<% } -%>
+<% if(includePut && includeDelete) { -%>
+
 <% } -%>
 <% if(includeDelete) { -%>
         public async Task<Delete<%= featureName %>sResponseDTO> Delete(Delete<%= featureName %>sRequestDTO request)
