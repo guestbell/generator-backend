@@ -25,7 +25,7 @@ describe('Google Analytics feature', () => {
         .run(path.join(__dirname, '../app'))
         .withPrompts({
           features: [],
-          includeModernizr: false
+          includeModernizr: false,
         })
         .on('end', done);
     });

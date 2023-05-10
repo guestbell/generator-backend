@@ -73,7 +73,7 @@ module.exports = class extends Generator {
       isPaginated: this.isPaginated,
       namespaceRequestResponse: this.namespaceRequestResponse,
       exceptIds: this.exceptIds,
-      ignorePropertyId: this.ignorePropertyId
+      ignorePropertyId: this.ignorePropertyId,
     };
 
     /*const copy = (input, output) => {
@@ -99,8 +99,8 @@ module.exports = class extends Generator {
       filesToRender = filesToRender.concat([
         {
           input: 'common/interface/IFeature.cs',
-          output: commonPath + 'Interface/I' + this.featureName + '.cs'
-        }
+          output: commonPath + 'Interface/I' + this.featureName + '.cs',
+        },
       ]);
       if (this.isPaginated) {
         filesToRender = filesToRender.concat([
@@ -110,8 +110,8 @@ module.exports = class extends Generator {
               commonPath +
               'Model/Enum/' +
               this.featureName +
-              'ColumnNameEnum.cs'
-          }
+              'ColumnNameEnum.cs',
+          },
         ]);
       }
       if (this.includeDelete) {
@@ -124,7 +124,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Delete' +
               this.featureName +
-              'sRequestDTO.cs'
+              'sRequestDTO.cs',
           },
           {
             input: 'common/requestResponse/DeleteFeaturesResponseDTO.cs',
@@ -134,8 +134,8 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Delete' +
               this.featureName +
-              'sResponseDTO.cs'
-          }
+              'sResponseDTO.cs',
+          },
         ]);
       }
       if (this.includeGet) {
@@ -147,7 +147,7 @@ module.exports = class extends Generator {
               '/Model/' +
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               this.featureName +
-              'BaseDTO.cs'
+              'BaseDTO.cs',
           },
           {
             input: 'common/model/FeatureDTO.cs',
@@ -156,7 +156,7 @@ module.exports = class extends Generator {
               '/Model/' +
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               this.featureName +
-              'DTO.cs'
+              'DTO.cs',
           },
           {
             input: 'common/requestResponse/GetFeaturesRequestDTO.cs',
@@ -166,7 +166,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Get' +
               this.featureName +
-              'sRequestDTO.cs'
+              'sRequestDTO.cs',
           },
           {
             input: 'common/requestResponse/GetFeaturesResponseDTO.cs',
@@ -176,8 +176,8 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Get' +
               this.featureName +
-              'sResponseDTO.cs'
-          }
+              'sResponseDTO.cs',
+          },
         ]);
       }
       if (this.includePost) {
@@ -190,7 +190,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Post' +
               this.featureName +
-              'BaseDTO.cs'
+              'BaseDTO.cs',
           },
           {
             input: 'common/model/PostFeatureDTO.cs',
@@ -200,7 +200,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Post' +
               this.featureName +
-              'DTO.cs'
+              'DTO.cs',
           },
           {
             input: 'common/requestResponse/PostFeaturesRequestDTO.cs',
@@ -210,7 +210,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Post' +
               this.featureName +
-              'sRequestDTO.cs'
+              'sRequestDTO.cs',
           },
           {
             input: 'common/requestResponse/PostFeaturesResponseDTO.cs',
@@ -220,8 +220,8 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Post' +
               this.featureName +
-              'sResponseDTO.cs'
-          }
+              'sResponseDTO.cs',
+          },
         ]);
       }
       if (this.includePut) {
@@ -234,7 +234,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Put' +
               this.featureName +
-              'BaseDTO.cs'
+              'BaseDTO.cs',
           },
           {
             input: 'common/model/PutFeatureDTO.cs',
@@ -244,7 +244,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Put' +
               this.featureName +
-              'DTO.cs'
+              'DTO.cs',
           },
           {
             input: 'common/requestResponse/PutFeaturesRequestDTO.cs',
@@ -254,7 +254,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Put' +
               this.featureName +
-              'sRequestDTO.cs'
+              'sRequestDTO.cs',
           },
           {
             input: 'common/requestResponse/PutFeaturesResponseDTO.cs',
@@ -264,8 +264,8 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Put' +
               this.featureName +
-              'sResponseDTO.cs'
-          }
+              'sResponseDTO.cs',
+          },
         ]);
       }
       if (this.createProjects) {
@@ -273,8 +273,8 @@ module.exports = class extends Generator {
           {
             input: 'common/GuestBell.Common.Feature.csproj',
             output:
-              commonPath + 'GuestBell.Common.' + this.projectName + '.csproj'
-          }
+              commonPath + 'GuestBell.Common.' + this.projectName + '.csproj',
+          },
         ]);
       }
     }
@@ -283,20 +283,20 @@ module.exports = class extends Generator {
       filesToRender = filesToRender.concat([
         {
           input: 'dal/interface/IFeatureDal.cs',
-          output: dalPath + 'Interface/I' + this.featureName + 'Dal.cs'
+          output: dalPath + 'Interface/I' + this.featureName + 'Dal.cs',
         },
         {
           input: 'dal/FeatureDalCore.cs',
-          output: dalPath + this.featureName + 'DalCore.cs'
+          output: dalPath + this.featureName + 'DalCore.cs',
         },
         {
           input: 'dal/FeatureDalConfigDTO.cs',
-          output: dalPath + this.featureName + 'DalConfigDTO.cs'
+          output: dalPath + this.featureName + 'DalConfigDTO.cs',
         },
         {
           input: 'dal/mapping/FeatureDalProfile.cs',
-          output: dalPath + 'Mapping/' + this.featureName + 'DalProfile.cs'
-        }
+          output: dalPath + 'Mapping/' + this.featureName + 'DalProfile.cs',
+        },
       ]);
       if (this.isPaginated) {
         /*filesToRender = filesToRender.concat([
@@ -320,7 +320,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Delete' +
               this.featureName +
-              'sSqlRequestDTO.cs'
+              'sSqlRequestDTO.cs',
           },
           {
             input: 'dal/requestResponse/DeleteFeaturesSqlResponseDTO.cs',
@@ -330,8 +330,8 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Delete' +
               this.featureName +
-              'sSqlResponseDTO.cs'
-          }
+              'sSqlResponseDTO.cs',
+          },
         ]);
       }
       if (this.includeGet) {
@@ -343,7 +343,7 @@ module.exports = class extends Generator {
               '/Model/' +
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               this.featureName +
-              'SqlDTO.cs'
+              'SqlDTO.cs',
           },
           {
             input: 'dal/requestResponse/GetFeaturesSqlRequestDTO.cs',
@@ -353,7 +353,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Get' +
               this.featureName +
-              'sSqlRequestDTO.cs'
+              'sSqlRequestDTO.cs',
           },
           {
             input: 'dal/requestResponse/GetFeaturesSqlResponseDTO.cs',
@@ -363,8 +363,8 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Get' +
               this.featureName +
-              'sSqlResponseDTO.cs'
-          }
+              'sSqlResponseDTO.cs',
+          },
         ]);
       }
       if (this.includePost) {
@@ -377,7 +377,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Post' +
               this.featureName +
-              'SqlDTO.cs'
+              'SqlDTO.cs',
           },
           {
             input: 'dal/requestResponse/PostFeaturesSqlRequestDTO.cs',
@@ -387,7 +387,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Post' +
               this.featureName +
-              'sSqlRequestDTO.cs'
+              'sSqlRequestDTO.cs',
           },
           {
             input: 'dal/requestResponse/PostFeaturesSqlResponseDTO.cs',
@@ -397,8 +397,8 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Post' +
               this.featureName +
-              'sSqlResponseDTO.cs'
-          }
+              'sSqlResponseDTO.cs',
+          },
         ]);
       }
       if (this.includePut) {
@@ -411,7 +411,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Put' +
               this.featureName +
-              'SqlDTO.cs'
+              'SqlDTO.cs',
           },
           {
             input: 'dal/requestResponse/PutFeaturesSqlRequestDTO.cs',
@@ -421,7 +421,7 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Put' +
               this.featureName +
-              'sSqlRequestDTO.cs'
+              'sSqlRequestDTO.cs',
           },
           {
             input: 'dal/requestResponse/PutFeaturesSqlResponseDTO.cs',
@@ -431,16 +431,16 @@ module.exports = class extends Generator {
               (this.namespaceRequestResponse ? this.featureName + '/' : '') +
               'Put' +
               this.featureName +
-              'sSqlResponseDTO.cs'
-          }
+              'sSqlResponseDTO.cs',
+          },
         ]);
       }
       if (this.createProjects) {
         filesToRender = filesToRender.concat([
           {
             input: 'dal/GuestBell.Dal.Feature.csproj',
-            output: dalPath + 'GuestBell.Dal.' + this.projectName + '.csproj'
-          }
+            output: dalPath + 'GuestBell.Dal.' + this.projectName + '.csproj',
+          },
         ]);
       }
     }
@@ -449,20 +449,20 @@ module.exports = class extends Generator {
       filesToRender = filesToRender.concat([
         {
           input: 'plugin/FeatureCore.cs',
-          output: pluginPath + this.featureName + 'Core.cs'
+          output: pluginPath + this.featureName + 'Core.cs',
         },
         {
           input: 'plugin/FeatureConfigDTO.cs',
-          output: pluginPath + this.featureName + 'ConfigDTO.cs'
-        }
+          output: pluginPath + this.featureName + 'ConfigDTO.cs',
+        },
       ]);
       if (this.createProjects) {
         filesToRender = filesToRender.concat([
           {
             input: 'plugin/GuestBell.Plugin.Feature.csproj',
             output:
-              pluginPath + 'GuestBell.Plugin.' + this.projectName + '.csproj'
-          }
+              pluginPath + 'GuestBell.Plugin.' + this.projectName + '.csproj',
+          },
         ]);
       }
     }
@@ -471,8 +471,9 @@ module.exports = class extends Generator {
       filesToRender = filesToRender.concat([
         {
           input: 'host/controllers/FeatureController.cs',
-          output: hostPath + 'Controllers/' + this.featureName + 'Controller.cs'
-        }
+          output:
+            hostPath + 'Controllers/' + this.featureName + 'Controller.cs',
+        },
       ]);
     }
 
@@ -480,8 +481,8 @@ module.exports = class extends Generator {
       filesToRender = filesToRender.concat([
         {
           input: 'web/mapping/FeatureWebProfile.cs',
-          output: webPath + 'Mapping/' + this.featureName + 'Profile.cs'
-        }
+          output: webPath + 'Mapping/' + this.featureName + 'Profile.cs',
+        },
       ]);
       if (this.isPaginated) {
         /*filesToRender = filesToRender.concat([
@@ -507,8 +508,8 @@ module.exports = class extends Generator {
               this.featureName +
               '/Delete' +
               this.featureName +
-              'sWebResponseDTO.cs'
-          }
+              'sWebResponseDTO.cs',
+          },
         ]);
       }
       if (this.includeGet) {
@@ -521,7 +522,7 @@ module.exports = class extends Generator {
               this.featureName +
               '/' +
               this.featureName +
-              'WebDTO.cs'
+              'WebDTO.cs',
           },
           {
             input: 'web/viewModel/GetFeaturesWebResponseDTO.cs',
@@ -531,7 +532,7 @@ module.exports = class extends Generator {
               this.featureName +
               '/Get' +
               this.featureName +
-              'sWebResponseDTO.cs'
+              'sWebResponseDTO.cs',
           },
           {
             input: 'web/viewModel/GetFeaturesWebRequestDTO.cs',
@@ -541,8 +542,8 @@ module.exports = class extends Generator {
               this.featureName +
               '/Get' +
               this.featureName +
-              'sWebRequestDTO.cs'
-          }
+              'sWebRequestDTO.cs',
+          },
         ]);
       }
       if (this.includePost) {
@@ -555,7 +556,7 @@ module.exports = class extends Generator {
               this.featureName +
               '/Post' +
               this.featureName +
-              'WebDTO.cs'
+              'WebDTO.cs',
           },
           {
             input: 'web/viewModel/PostFeaturesWebRequestDTO.cs',
@@ -565,7 +566,7 @@ module.exports = class extends Generator {
               this.featureName +
               '/Post' +
               this.featureName +
-              'sWebRequestDTO.cs'
+              'sWebRequestDTO.cs',
           },
           {
             input: 'web/viewModel/PostFeaturesWebResponseDTO.cs',
@@ -575,8 +576,8 @@ module.exports = class extends Generator {
               this.featureName +
               '/Post' +
               this.featureName +
-              'sWebResponseDTO.cs'
-          }
+              'sWebResponseDTO.cs',
+          },
         ]);
       }
       if (this.includePut) {
@@ -589,7 +590,7 @@ module.exports = class extends Generator {
               this.featureName +
               '/Put' +
               this.featureName +
-              'WebDTO.cs'
+              'WebDTO.cs',
           },
           {
             input: 'web/viewModel/PutFeaturesWebRequestDTO.cs',
@@ -599,7 +600,7 @@ module.exports = class extends Generator {
               this.featureName +
               '/Put' +
               this.featureName +
-              'sWebRequestDTO.cs'
+              'sWebRequestDTO.cs',
           },
           {
             input: 'web/viewModel/PutFeaturesWebResponseDTO.cs',
@@ -609,8 +610,8 @@ module.exports = class extends Generator {
               this.featureName +
               '/Put' +
               this.featureName +
-              'sWebResponseDTO.cs'
-          }
+              'sWebResponseDTO.cs',
+          },
         ]);
       }
     }

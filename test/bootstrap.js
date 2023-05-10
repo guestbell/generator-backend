@@ -27,7 +27,7 @@ describe('Bootstrap feature', () => {
         .run(path.join(__dirname, '../app'))
         .withPrompts({
           features: [],
-          includeJQuery: false
+          includeJQuery: false,
         })
         .on('end', done);
     });
@@ -44,7 +44,7 @@ describe('Bootstrap feature', () => {
       helpers
         .run(path.join(__dirname, '../app'))
         .withPrompts({
-          features: ['includeSass', 'includeBootstrap']
+          features: ['includeSass', 'includeBootstrap'],
         })
         .on('end', done);
     });
@@ -72,7 +72,7 @@ describe('Bootstrap feature', () => {
       helpers
         .run(path.join(__dirname, '../app'))
         .withPrompts({
-          features: ['includeBootstrap']
+          features: ['includeBootstrap'],
         })
         .on('end', done);
     });

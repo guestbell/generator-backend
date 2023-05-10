@@ -34,7 +34,7 @@ describe('general', () => {
       'app/styles/main.css',
       'app/images',
       'app/fonts',
-      'test'
+      'test',
     ]);
   });
 

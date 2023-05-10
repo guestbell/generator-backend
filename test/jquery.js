@@ -9,7 +9,7 @@ describe('jQuery feature', () => {
         .run(path.join(__dirname, '../app'))
         .withPrompts({
           features: [],
-          includeJQuery: true
+          includeJQuery: true,
         })
         .on('end', done);
     });
@@ -29,7 +29,7 @@ describe('jQuery feature', () => {
         .run(path.join(__dirname, '../app'))
         .withPrompts({
           features: [],
-          includeJQuery: false
+          includeJQuery: false,
         })
         .on('end', done);
     });
