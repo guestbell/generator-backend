@@ -1,0 +1,8 @@
+{
+  "@guestbell/generator-backend": {
+    "promptValues": {
+      "featureName": "Content",
+      "projectName": "Content"
+    }
+  }
+}

@@ -1,8 +1,8 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const commandExists = require('command-exists').sync;
+// const commandExists = require('command-exists').sync;
 const yosay = require('yosay');
-const mkdirp = require('mkdirp');
+// const mkdirp = require('mkdirp');
 const config = require('./config');
 
 module.exports = class extends Generator {
@@ -55,6 +55,8 @@ module.exports = class extends Generator {
       this.createProjects = answers.createProjects;
       this.isPaginated = answers.isPaginated;
       this.namespaceRequestResponse = answers.namespaceRequestResponse;
+      this.exceptIds = answers.exceptIds;
+      this.ignorePropertyId = answers.ignorePropertyId;
     });
   }
 
@@ -69,12 +71,14 @@ module.exports = class extends Generator {
       includeDelete: this.includeDelete,
       createProjects: this.createProjects,
       isPaginated: this.isPaginated,
-      namespaceRequestResponse: this.namespaceRequestResponse
+      namespaceRequestResponse: this.namespaceRequestResponse,
+      exceptIds: this.exceptIds,
+      ignorePropertyId: this.ignorePropertyId
     };
 
-    const copy = (input, output) => {
+    /*const copy = (input, output) => {
       this.fs.copy(this.templatePath(input), this.destinationPath(output));
-    };
+    };*/
 
     const copyTpl = (input, output, data) => {
       this.fs.copyTpl(
@@ -137,8 +141,22 @@ module.exports = class extends Generator {
       if (this.includeGet) {
         filesToRender = filesToRender.concat([
           {
+            input: 'common/model/FeatureBaseDTO.cs',
+            output:
+              commonPath +
+              '/Model/' +
+              (this.namespaceRequestResponse ? this.featureName + '/' : '') +
+              this.featureName +
+              'BaseDTO.cs'
+          },
+          {
             input: 'common/model/FeatureDTO.cs',
-            output: commonPath + '/Model/' + this.featureName + 'DTO.cs'
+            output:
+              commonPath +
+              '/Model/' +
+              (this.namespaceRequestResponse ? this.featureName + '/' : '') +
+              this.featureName +
+              'DTO.cs'
           },
           {
             input: 'common/requestResponse/GetFeaturesRequestDTO.cs',
@@ -165,8 +183,24 @@ module.exports = class extends Generator {
       if (this.includePost) {
         filesToRender = filesToRender.concat([
           {
+            input: 'common/model/PostFeatureBaseDTO.cs',
+            output:
+              commonPath +
+              '/Model/' +
+              (this.namespaceRequestResponse ? this.featureName + '/' : '') +
+              'Post' +
+              this.featureName +
+              'BaseDTO.cs'
+          },
+          {
             input: 'common/model/PostFeatureDTO.cs',
-            output: commonPath + '/Model/Post' + this.featureName + 'DTO.cs'
+            output:
+              commonPath +
+              '/Model/' +
+              (this.namespaceRequestResponse ? this.featureName + '/' : '') +
+              'Post' +
+              this.featureName +
+              'DTO.cs'
           },
           {
             input: 'common/requestResponse/PostFeaturesRequestDTO.cs',
@@ -193,8 +227,24 @@ module.exports = class extends Generator {
       if (this.includePut) {
         filesToRender = filesToRender.concat([
           {
+            input: 'common/model/PutFeatureBaseDTO.cs',
+            output:
+              commonPath +
+              '/Model/' +
+              (this.namespaceRequestResponse ? this.featureName + '/' : '') +
+              'Put' +
+              this.featureName +
+              'BaseDTO.cs'
+          },
+          {
             input: 'common/model/PutFeatureDTO.cs',
-            output: commonPath + '/Model/Put' + this.featureName + 'DTO.cs'
+            output:
+              commonPath +
+              '/Model/' +
+              (this.namespaceRequestResponse ? this.featureName + '/' : '') +
+              'Put' +
+              this.featureName +
+              'DTO.cs'
           },
           {
             input: 'common/requestResponse/PutFeaturesRequestDTO.cs',
@@ -233,7 +283,7 @@ module.exports = class extends Generator {
       filesToRender = filesToRender.concat([
         {
           input: 'dal/interface/IFeatureDal.cs',
-          output: dalPath + 'Interface/I' + this.featureName + '.cs'
+          output: dalPath + 'Interface/I' + this.featureName + 'Dal.cs'
         },
         {
           input: 'dal/FeatureDalCore.cs',
@@ -249,7 +299,7 @@ module.exports = class extends Generator {
         }
       ]);
       if (this.isPaginated) {
-        filesToRender = filesToRender.concat([
+        /*filesToRender = filesToRender.concat([
           {
             input: 'dal/model/enum/FeatureColumnNameSqlEnum.cs',
             output:
@@ -258,7 +308,7 @@ module.exports = class extends Generator {
               this.featureName +
               'ColumnNameSqlEnum.cs'
           }
-        ]);
+        ]);*/
       }
       if (this.includeDelete) {
         filesToRender = filesToRender.concat([
@@ -288,7 +338,12 @@ module.exports = class extends Generator {
         filesToRender = filesToRender.concat([
           {
             input: 'dal/model/FeatureSqlDTO.cs',
-            output: dalPath + '/Model/' + this.featureName + 'SqlDTO.cs'
+            output:
+              dalPath +
+              '/Model/' +
+              (this.namespaceRequestResponse ? this.featureName + '/' : '') +
+              this.featureName +
+              'SqlDTO.cs'
           },
           {
             input: 'dal/requestResponse/GetFeaturesSqlRequestDTO.cs',
@@ -316,7 +371,13 @@ module.exports = class extends Generator {
         filesToRender = filesToRender.concat([
           {
             input: 'dal/model/PostFeatureSqlDTO.cs',
-            output: dalPath + '/Model/Post' + this.featureName + 'SqlDTO.cs'
+            output:
+              dalPath +
+              '/Model/' +
+              (this.namespaceRequestResponse ? this.featureName + '/' : '') +
+              'Post' +
+              this.featureName +
+              'SqlDTO.cs'
           },
           {
             input: 'dal/requestResponse/PostFeaturesSqlRequestDTO.cs',
@@ -344,7 +405,13 @@ module.exports = class extends Generator {
         filesToRender = filesToRender.concat([
           {
             input: 'dal/model/PutFeatureSqlDTO.cs',
-            output: dalPath + '/Model/Put' + this.featureName + 'SqlDTO.cs'
+            output:
+              dalPath +
+              '/Model/' +
+              (this.namespaceRequestResponse ? this.featureName + '/' : '') +
+              'Put' +
+              this.featureName +
+              'SqlDTO.cs'
           },
           {
             input: 'dal/requestResponse/PutFeaturesSqlRequestDTO.cs',
@@ -394,7 +461,7 @@ module.exports = class extends Generator {
           {
             input: 'plugin/GuestBell.Plugin.Feature.csproj',
             output:
-              pluginPath + 'GuestBell.Common.' + this.projectName + '.csproj'
+              pluginPath + 'GuestBell.Plugin.' + this.projectName + '.csproj'
           }
         ]);
       }
@@ -417,7 +484,7 @@ module.exports = class extends Generator {
         }
       ]);
       if (this.isPaginated) {
-        filesToRender = filesToRender.concat([
+        /*filesToRender = filesToRender.concat([
           {
             input: 'web/model/enum/FeatureColumnNameWebEnum.cs',
             output:
@@ -428,7 +495,7 @@ module.exports = class extends Generator {
               this.featureName +
               'ColumnNameWebEnum.cs'
           }
-        ]);
+        ]);*/
       }
       if (this.includeDelete) {
         filesToRender = filesToRender.concat([

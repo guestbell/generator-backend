@@ -7,7 +7,11 @@ using GuestBell.Common.<%= projectName %>.RequestResponse.<%= featureName %>;
 <% } else { -%>
 using GuestBell.Common.<%= projectName %>.RequestResponse;<%
 } -%>
-using GuestBell.Dal.<%= projectName %>.Model;
+<%if(namespaceRequestResponse) { -%>
+using GuestBell.Common.<%= projectName %>.Model.<%= featureName %>;
+<% } else { -%>
+using GuestBell.Common.<%= projectName %>.Model;
+<% } -%>
 <%if(namespaceRequestResponse) { -%>
 using GuestBell.Dal.<%= projectName %>.RequestResponse.<%= featureName %>;
 <% } else { -%>

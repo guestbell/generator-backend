@@ -46,8 +46,12 @@ namespace GuestBell.Dal.<%= projectName %>
                     }
                     p.Add("@Ids", ids.AsTableValuedParameter("dbo.IdList"));
                 }
+
 <%if (isBoundToProperty) { -%>
                 p.Add("@PropertyId", reqSafe.PropertyId);
+<% } -%>
+<%if (ignorePropertyId) { -%>
+                p.Add("@IgnorePropertyId", reqSafe.IgnorePropertyId);
 <% } -%>
                 p.Add("@Revert", reqSafe.Revert);
                 p.Add("@Return", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -79,6 +83,18 @@ namespace GuestBell.Dal.<%= projectName %>
                     }
                     p.Add("@Ids", ids.AsTableValuedParameter("dbo.IdList"));
                 }
+<%if(exceptIds) { -%>
+                if (reqSafe.ExceptIds != null)
+                {
+                    var ids = new DataTable();
+                    ids.Columns.Add("Id", typeof(long));
+                    foreach (var id in reqSafe.ExceptIds)
+                    {
+                        ids.Rows.Add(id);
+                    }
+                    p.Add("@ExceptIds", ids.AsTableValuedParameter("dbo.IdList"));
+                }
+<% } -%>
 <%if (isBoundToProperty) { -%>
                 p.Add("@PropertyId", reqSafe.PropertyId);
 <% } -%>

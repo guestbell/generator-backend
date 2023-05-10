@@ -14,6 +14,14 @@ namespace GuestBell.Common.<%= projectName %>.RequestResponse
         public long PropertyId { get; set; }
         
 <% } -%>
+<%if(ignorePropertyId) { -%>
+        public bool IgnorePropertyId { get; set; }
+        
+<% } -%>
+<%if(exceptIds) { -%>
+        public List<long> ExceptIds { get; set; }
+        
+<% } -%>
         public List<long> Ids { get; set; }
     }
 }

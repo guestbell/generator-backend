@@ -13,6 +13,10 @@ namespace GuestBell.Common.<%= projectName %>.RequestResponse
         public long PropertyId { get; set; }
 
 <% } -%>
+<%if(ignorePropertyId) { -%>
+        public bool IgnorePropertyId { get; set; }
+        
+<% } -%>
         public List<long> Ids { get; set; }
 
         public bool Revert { get; set; } = false;

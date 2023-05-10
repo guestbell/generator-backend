@@ -1,8 +1,8 @@
 using System;
 <%if(namespaceRequestResponse) { -%>
-using GuestBell.Common.<%= projectName %>.Model.<%= featureName %>
+using GuestBell.Common.<%= projectName %>.Model.<%= featureName %>;
 <% } else { -%>
-using GuestBell.Common.<%= projectName %>.Model
+using GuestBell.Common.<%= projectName %>.Model;
 <% } -%>
 
 <%if(namespaceRequestResponse) { -%>

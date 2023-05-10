@@ -6,5 +6,9 @@ namespace GuestBell.Common.Web.ViewModel.<%= featureName %>
 {
     public class Get<%= featureName %>sWebRequestDTO : <% if(!isPaginated) { %>BaseWebRequestDTO<% } else {%>PaginatedWebRequestDTO<<%= featureName %>ColumnNameEnum><% }%>
     {
+<%if(exceptIds) { -%>
+        public List<long> ExceptIds { get; set; }
+        
+<% } -%>
     }
 }

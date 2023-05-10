@@ -5,7 +5,11 @@ using AutoMapper;
 if(!namespaceRequestResponse) { 
 %>using GuestBell.Common.<%= projectName %>.RequestResponse;<%
 }%>
+<%if(namespaceRequestResponse) { -%>
+using GuestBell.Common.<%= projectName %>.Model.<%= featureName %>;
+<% } else { -%>
 using GuestBell.Common.<%= projectName %>.Model;
+<% } -%>
 using GuestBell.Common.Web.Model.<%= featureName %>;
 using GuestBell.Common.Web.ViewModel.<%= featureName %>;
 

@@ -1,9 +1,9 @@
 using GuestBell.Common.Base;
 using System.Collections.Generic;
 <%if(namespaceRequestResponse) { -%>
-using GuestBell.Common.<%= projectName %>.Model.<%= featureName %>
+using GuestBell.Common.<%= projectName %>.Model.<%= featureName %>;
 <% } else { -%>
-using GuestBell.Common.<%= projectName %>.Model
+using GuestBell.Common.<%= projectName %>.Model;
 <% } -%>
 
 <%if(namespaceRequestResponse) { -%>

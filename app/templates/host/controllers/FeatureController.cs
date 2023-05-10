@@ -33,7 +33,7 @@ namespace GuestBell.Host.Backend.Controllers
 {
     [Produces("application/json")]
 <% if(isBoundToProperty) { -%> 
-    [Route("property/{propertyId:long}/<%= featureName.toLowerCase() %>")]
+    [Route("property/{propertyId:long}/<%= featureName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase() %>")]
 <% } else { -%>
     [Route("<%= featureName.toLowerCase() %>")]
 <% } -%>
@@ -120,6 +120,7 @@ namespace GuestBell.Host.Backend.Controllers
                 return webResp;
             }, ModelState, logger, LogEventIdConstant.UPDATE_ITEM);
         }
+		
 <% } -%>
 <% if(includeDelete) { -%>
         [Produces(typeof(Delete<%= featureName %>sWebResponseDTO))]

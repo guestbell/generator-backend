@@ -26,25 +26,43 @@ module.exports = {
       type: 'confirm',
       name: 'createProjects',
       message: 'Should we create dot net projects as well?',
-      default: false
+      default: false,
+      store: true
     },
     {
       type: 'confirm',
       name: 'namespaceRequestResponse',
       message: 'Should we create Request/Response inside namespaces?',
-      default: true
+      default: true,
+      store: true
     },
     {
       type: 'confirm',
       name: 'isPaginated',
       message: 'Is this resource paginated?',
-      default: true
+      default: true,
+      store: true
     },
     {
       type: 'confirm',
       name: 'isBoundToProperty',
       message: 'Is this resource bound to property?',
-      default: false
+      default: false,
+      store: true
+    },
+    {
+      type: 'confirm',
+      name: 'ignorePropertyId',
+      message: 'Should we create IgnorePropertyId field?',
+      default: true,
+      store: true
+    },
+    {
+      type: 'confirm',
+      name: 'exceptIds',
+      message: 'Should we create ExceptIds field?',
+      default: true,
+      store: true
     },
     {
       type: 'checkbox',
@@ -101,7 +119,7 @@ module.exports = {
         {
           name: 'Get',
           value: 'includeGet',
-          checked: false
+          checked: true
         }
       ]
     }
