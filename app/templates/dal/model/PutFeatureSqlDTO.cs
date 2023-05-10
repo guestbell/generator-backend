@@ -6,9 +6,9 @@ using GuestBell.Common.<%= projectName %>.Model;
 <% } -%>
 
 <%if(namespaceRequestResponse) { -%>
-namespace GuestBell.Dal.<%= projectName %>.RequestResponse.<%= featureName %>
+namespace GuestBell.Dal.<%= projectName %>.Model.<%= featureName %>
 <% } else { -%>
-namespace GuestBell.Dal.<%= projectName %>.RequestResponse
+namespace GuestBell.Dal.<%= projectName %>.Model
 <% } -%>
 {
     public class Put<%= featureName %>SqlDTO : Put<%= featureName %>BaseDTO 
