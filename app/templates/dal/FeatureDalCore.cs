@@ -2,8 +2,13 @@ using Dapper;
 using GuestBell.Common.Dal.Base;
 using GuestBell.Common.Dal.Util;
 using GuestBell.Common.Enum;
+using GuestBell.Common.Dal.Extension;
 using GuestBell.Dal.<%= projectName %>.Interface;
+<%if(namespaceRequestResponse) { -%>
+using GuestBell.Dal.<%= projectName %>.Model.<%= featureName %>;
+<% } else { -%>
 using GuestBell.Dal.<%= projectName %>.Model;
+<% } -%>
 <%if(namespaceRequestResponse) { -%>
 using GuestBell.Dal.<%= projectName %>.RequestResponse.<%= featureName %>;
 <% } else { -%>
@@ -107,7 +112,7 @@ namespace GuestBell.Dal.<%= projectName %>
                 var reader = await connection.QueryMultipleAsync("[<%= featureName %>].spGet<%= featureName %>s", p, transaction: transaction, commandType: CommandType.StoredProcedure);
 
                 long totalCount = 0;
-                reader.Read<<%= featureName %>SqlDTO, long, <%= featureName %>SqlDTO>((<%= featureName %>, totalCountLocal) => {
+                reader.Read<<%= featureName %>SqlDTO, long, <%= featureName %>SqlDTO>((<%= firstCharToLower(featureName) %>, totalCountLocal) => {
                     totalCount = totalCountLocal;
                     lookup.Add(<%= featureName %>.Id, <%= featureName %>);
                     return <%= featureName %>;
@@ -168,15 +173,15 @@ namespace GuestBell.Dal.<%= projectName %>
             return await request.GenericDalRespond(config, async (reqSafe, connection, transaction) =>
             {
                 var parameters = new List<DynamicParameters>();
-                foreach (var <%= featureName %> in reqSafe.<%= featureName %>s)
+                foreach (var <%= firstCharToLower(featureName) %> in reqSafe.<%= featureName %>s)
                 {
                     var p = new DynamicParameters();
-                    // Put more stuff here
-<%if (isBoundToProperty) { -%>
-                    p.Add("@PropertyId", reqSafe.PropertyId);
+<%if(isBoundToProperty) { -%>
+                    p.AddPropertiesFromObject(houseKeepingInstance, reqSafe.PropertyId);
+<% } else { -%>
+                    p.AddPropertiesFromObject(houseKeepingInstance);
 <% } -%>
-                    p.Add("@Id", dbType: DbType.Int64, direction: ParameterDirection.Output);
-                    p.Add("@Return", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    // Add more stuff
                     parameters.Add(p);
                 }
                 await connection.ExecuteAsync("[<%= featureName %>].spPost<%= featureName %>", parameters, transaction: transaction, commandType: CommandType.StoredProcedure);
@@ -198,15 +203,15 @@ namespace GuestBell.Dal.<%= projectName %>
             return await request.GenericDalRespond(config, async (reqSafe, connection, transaction) =>
             {
                 var parameters = new List<DynamicParameters>();
-                foreach (var <%= featureName %> in reqSafe.<%= featureName %>s)
+                foreach (var <%= firstCharToLower(featureName) %> in reqSafe.<%= featureName %>s)
                 {
                     var p = new DynamicParameters();
-                    // Put more stuff here
-<%if (isBoundToProperty) { -%>
-                    p.Add("@PropertyId", reqSafe.PropertyId);
+<%if(isBoundToProperty) { -%>
+                    p.AddPropertiesFromObject(houseKeepingInstance, reqSafe.PropertyId);
+<% } else { -%>
+                    p.AddPropertiesFromObject(houseKeepingInstance);
 <% } -%>
-                    p.Add("@Id", <%= featureName %>.Id);
-                    p.Add("@Return", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    // Add more stuff
                     parameters.Add(p);
                 }
                 await connection.ExecuteAsync("[<%= featureName %>].spPut<%= featureName %>", parameters, transaction: transaction, commandType: CommandType.StoredProcedure);

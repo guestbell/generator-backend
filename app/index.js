@@ -4,6 +4,7 @@ const Generator = require('yeoman-generator');
 const yosay = require('yosay');
 // const mkdirp = require('mkdirp');
 const config = require('./config');
+const { firstCharToLower } = require('./utils');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -84,7 +85,7 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(input),
         this.destinationPath(output),
-        data
+        Object.assign({}, data, { firstCharToLower })
       );
     };
 

@@ -17,6 +17,11 @@ using GuestBell.Dal.<%= projectName %>.RequestResponse.<%= featureName %>;
 <% } else { -%>
 using GuestBell.Dal.<%= projectName %>.RequestResponse;
 <% } -%>
+<%if(namespaceRequestResponse) { -%>
+using GuestBell.Dal.<%= projectName %>.Model.<%= featureName %>;
+<% } else { -%>
+using GuestBell.Dal.<%= projectName %>.Model;
+<% } -%>
 
 namespace GuestBell.Dal.<%= projectName %>.Mapping
 {
